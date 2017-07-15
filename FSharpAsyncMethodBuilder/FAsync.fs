@@ -8,6 +8,23 @@
 // You should have received a copy of the CC0 Public Domain Dedication along with this software.
 // If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
+namespace System.Runtime.CompilerServices
+open System
+
+[<AutoSerializable(false)>]
+[<AttributeUsage
+    ( AttributeTargets.Class
+        ||| AttributeTargets.Struct
+        ||| AttributeTargets.Interface
+        ||| AttributeTargets.Delegate
+        ||| AttributeTargets.Enum
+    , Inherited = false
+    , AllowMultiple = false
+    )>]
+type AsyncMethodBuilderAttribute(builderType : Type) =
+    inherit Attribute()
+    member this.BuilderType = builderType
+
 namespace rec FAsync
 open System
 open System.Runtime.CompilerServices
